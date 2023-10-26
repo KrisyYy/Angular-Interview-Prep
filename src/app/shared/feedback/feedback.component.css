@@ -1,0 +1,16 @@
+.box {
+    position: fixed;
+    top: 30px;
+    right: 50px;
+    max-width: 300px;
+    width: 30%;
+    border: solid 1px;
+}
+
+.errorBox {
+    border-color: red;
+}
+
+.successBox {
+    border-color: green;
+}

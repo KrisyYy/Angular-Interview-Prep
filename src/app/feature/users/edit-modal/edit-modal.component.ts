@@ -16,12 +16,13 @@ export class EditModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getUserById(this.userId).subscribe(user => {
-      this.editForm.patchValue({
-        email: user.email,
-        firstName: user.firstName,
-        lastName: user.lastName
-      })
-    });
+        this.editForm.patchValue({
+          email: user.email,
+          firstName: user.firstName,
+          lastName: user.lastName
+        })
+      }
+    );
   }
 
   submitHandler() {

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/core/services/user.service';
@@ -20,12 +20,18 @@ export class CreateEditPageComponent implements OnInit {
     this.userId = this.activatedRoute.snapshot.params['id'];
     if (!!this.userId) {
       this.userService.getUserById(this.userId).subscribe(user => {
-        this.form.patchValue({
-          email: user.email,
-          firstName: user.firstName,
-          lastName: user.lastName
-        })
-      })
+        if (!!user.id) {
+          this.form.patchValue({
+            email: user.email,
+            firstName: user.firstName,
+            lastName: user.lastName
+            })
+          }
+          else {
+            this.router.navigate(['/page-not-found']);
+          }
+        }
+      )
     }
   }
 

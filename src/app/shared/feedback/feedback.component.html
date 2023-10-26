@@ -1,0 +1,3 @@
+<div *ngIf="!!feedback" [ngClass]="[feedback.feedbackType === 0 ? 'errorBox' : 'successBox', 'box']">
+    <p>{{feedback.message}}</p>
+</div>

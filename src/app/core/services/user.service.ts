@@ -1,9 +1,10 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { IUser } from '../interfaces/user';
 import { v4 as uuidv4 } from 'uuid';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FeedbackMessageService, FeedbackType } from './feedback-message.service';
 
 const userApiUrl: string = "http://localhost:4200/api/user";
 
@@ -12,7 +13,7 @@ const userApiUrl: string = "http://localhost:4200/api/user";
 })
 export class UserService {
 
-  constructor(private http: HttpClient, private formBuilder: FormBuilder) { }
+  constructor(private http: HttpClient, private formBuilder: FormBuilder, private feedbackService: FeedbackMessageService) { }
 
   getUsers(): Observable<IUser[]> {
     return this.http.get<IUser[]>(userApiUrl);
@@ -31,7 +32,9 @@ export class UserService {
       firstName: firstName,
       lastName: lastName
     };
-    return this.http.post<IUser>(userApiUrl, newUser);
+    return this.http.post<IUser>(userApiUrl, newUser).pipe(tap(() => {
+      this.feedbackService.giveFeedback({ message: "Successfully created user!", feedbackType: FeedbackType.success})
+    }));
   }
 
   updateUser(id: string, data: any): Observable<IUser> {
@@ -42,11 +45,15 @@ export class UserService {
       firstName: firstName,
       lastName: lastName
     };
-    return this.http.patch<IUser>(`${userApiUrl}/${id}`, updatedUser);
+    return this.http.patch<IUser>(`${userApiUrl}/${id}`, updatedUser).pipe(tap(() => {
+      this.feedbackService.giveFeedback({ message: "Successfully updated user", feedbackType: FeedbackType.success})
+    }));
   }
 
   deleteUser(id: string): Observable<IUser> {
-    return this.http.delete<IUser>(`${userApiUrl}/${id}`);
+    return this.http.delete<IUser>(`${userApiUrl}/${id}`).pipe(tap(() => {
+      this.feedbackService.giveFeedback({ message: "Successfully deleted user", feedbackType: FeedbackType.success})
+    }));
   }
 
 
