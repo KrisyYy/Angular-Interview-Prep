@@ -31,14 +31,12 @@ export class CreateEditPageComponent implements OnInit {
 
   submitHandler() {
     if (!!this.userId) {
-      this.userService.updateUser(this.userId!, this.form.value)
-      .subscribe(() => {
+      this.userService.updateUser(this.userId!, this.form.value).subscribe(() => {
         this.router.navigate(['/'])
       })
     }
     else {
-      this.userService.createUser(this.form.value) 
-      .subscribe(() => {
+      this.userService.createUser(this.form.value).subscribe(() => {
         this.router.navigate(['/'])
       })
     }

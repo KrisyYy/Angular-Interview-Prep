@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
 import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
@@ -10,9 +9,8 @@ import { UserService } from 'src/app/core/services/user.service';
 })
 export class EditModalComponent implements OnInit {
   @Input() userId!: string;
-  @Output() hideModal: EventEmitter<boolean> = new EventEmitter();
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService) { }
 
   editForm: FormGroup = this.userService.userForm();
 
@@ -27,14 +25,14 @@ export class EditModalComponent implements OnInit {
   }
 
   submitHandler() {
-    this.userService.updateUser(this.userId, this.editForm.value)
-    .subscribe(() => {
-      this.hideModal.emit(true);
+    this.userService.updateUser(this.userId, this.editForm.value).subscribe(() => {
+      this.userService.openCloseModal.emit();
+      this.userService.refreshUsers.emit();
     })
   }
 
   closeModal() {
-    this.hideModal.emit(false);
+    this.userService.openCloseModal.emit();
   }
 
   showError(property: string): boolean {

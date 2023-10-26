@@ -1,4 +1,4 @@
 <button ngClass="create" routerLink="/create">Create User</button>
-<app-user-list (modalEditUser)="displayEditModal($event)"></app-user-list>
+<app-user-list></app-user-list>
 
-<app-edit-modal *ngIf="showEditModal" (hideModal)="closeEditModal($event)" [userId]="selectedUserId!"></app-edit-modal>
+<app-edit-modal *ngIf="showEditModal" [userId]="userId!"></app-edit-modal>

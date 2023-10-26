@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IUser } from '../interfaces/user';
@@ -49,6 +49,7 @@ export class UserService {
     return this.http.delete<IUser>(`${userApiUrl}/${id}`);
   }
 
+
   // TODO validate more
   userForm(): FormGroup {
     return this.formBuilder.group({
@@ -57,4 +58,8 @@ export class UserService {
       lastName: ["", { validators: [Validators.required, Validators.maxLength(50)]}]
     })
   }
+
+
+  openCloseModal: EventEmitter<string | undefined> = new EventEmitter();
+  refreshUsers: EventEmitter<any> = new EventEmitter();
 }

@@ -6,6 +6,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { EditModalComponent } from './edit-modal/edit-modal.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserItemComponent } from './user-item/user-item.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomePageComponent,
     CreateEditPageComponent,
     UserListComponent,
-    EditModalComponent
+    EditModalComponent,
+    UserItemComponent
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { IUser } from 'src/app/core/interfaces/user';
 import { UserService } from 'src/app/core/services/user.service';
 
@@ -8,16 +8,17 @@ import { UserService } from 'src/app/core/services/user.service';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css']
 })
-export class UserListComponent implements OnInit {
-
+export class UserListComponent implements OnInit, OnDestroy {
   users!: IUser[];
+  refresh?: Subscription;
 
-  @Output() modalEditUser: EventEmitter<string> = new EventEmitter();
-
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.getAllUsers();
+    this.refresh = this.userService.refreshUsers.subscribe(() => {
+      this.getAllUsers();
+    })
   }
 
   getAllUsers(): void {
@@ -26,20 +27,7 @@ export class UserListComponent implements OnInit {
     })
   }
 
-  editModalHandler(id: string): void {
-    this.modalEditUser.emit(id);
-  }
-
-  editHandler(id: string, event: any): void {
-    event.stopPropagation();
-    this.router.navigate(['/edit', id])
-  }
-
-  deleteHandler(id: string, event: any): void {
-    event.stopPropagation();
-    this.userService.deleteUser(id)
-    .subscribe(() => {
-      this.getAllUsers();
-    });
+  ngOnDestroy(): void {
+    this.refresh?.unsubscribe();
   }
 }

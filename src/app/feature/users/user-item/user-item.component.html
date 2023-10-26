@@ -1,0 +1,8 @@
+<div (click)="editModalHandler(user.id)"  ngClass="userBox">
+    <div>
+        <p>{{user.firstName}} {{user.lastName}}</p>
+        <p>Email: {{user.email}}</p>
+    </div>
+    <button (click)="editHandler(user.id, $event)">Edit</button>
+    <button (click)="deleteHandler(user.id, $event)">Delete</button>
+</div>

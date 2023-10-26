@@ -1,27 +1,33 @@
-import { Component, ViewChild } from '@angular/core';
-import { UserListComponent } from '../../user-list/user-list.component';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { UserService } from 'src/app/core/services/user.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
-export class HomePageComponent{
-
-  @ViewChild(UserListComponent) userList!: UserListComponent
+export class HomePageComponent implements OnInit, OnDestroy{
 
   showEditModal: boolean = false;
-  selectedUserId: string | undefined;
+  userId: string | undefined;
+  modalSubscription?: Subscription;
   
-  displayEditModal(id: string) {
-    this.selectedUserId = id;
-    this.showEditModal = true;
+  constructor (private userService: UserService) { }
+
+  ngOnInit(): void {
+    this.modalSubscription = this.userService.openCloseModal.subscribe(value => {
+      if (!!value) {
+        this.showEditModal = true;
+        this.userId = value;
+      }
+      else {
+        this.showEditModal = false;
+      }
+    })
   }
 
-  closeEditModal(hasSubmitted: boolean) {
-    this.showEditModal = false;
-    if (hasSubmitted) {
-      this.userList.getAllUsers();
-    }
+  ngOnDestroy(): void {
+    this.modalSubscription?.unsubscribe();
   }
 }
