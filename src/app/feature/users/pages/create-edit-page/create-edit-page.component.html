@@ -1,0 +1,38 @@
+<div>
+    <form [formGroup]="form" (ngSubmit)="submitHandler()" ngClass="container">
+        <h2>{{!!userId ? "Edit" : "Create New"}} User</h2>
+
+        <div>
+            <label for="email">Email</label>
+            <input formControlName="email" type="email" name="email">
+            <ng-container *ngIf="showError('email')">
+                <p *ngIf="isNotValid('email', 'required')">Field is required!</p>
+                <p *ngIf="isNotValid('email', 'email')">Email is not valid!</p>
+            </ng-container>
+        </div>
+
+
+        <div>
+            <label for="firstName">First Name</label>
+            <input formControlName="firstName" type="text" name="firstName">
+            <ng-container *ngIf="showError('firstName')">
+                <p *ngIf="isNotValid('firstName', 'required')">Field is required!</p>
+            </ng-container>
+        </div>
+
+        <div>
+            <label for="lastName">Last Name</label>
+            <input formControlName="lastName" type="text" name="lastName">
+            <ng-container *ngIf="showError('lastName')">
+                <p *ngIf="isNotValid('lastName', 'required')">Field is required!</p>
+            </ng-container>
+        </div>
+
+        <button [disabled]="form.invalid">Submit</button>
+
+    </form>
+</div>
+
+
+
+<button ngClass="back" routerLink="/home">Back</button>

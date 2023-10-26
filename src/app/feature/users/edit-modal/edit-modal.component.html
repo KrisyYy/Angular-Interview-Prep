@@ -1,0 +1,38 @@
+<div ngClass="modal">
+    <div  ngClass="modal-content">
+        <button ngClass="close" (click)="closeModal()">Back</button>
+        <form [formGroup]="editForm" (ngSubmit)="submitHandler()">
+            <h2>Edit User</h2>
+    
+            <div>
+                <label for="email">Email</label>
+                <input formControlName="email" type="email" name="email">
+                <ng-container *ngIf="showError('email')">
+                    <p *ngIf="isNotValid('email', 'required')">Field is required!</p>
+                    <p *ngIf="isNotValid('email', 'email')">Email is not valid!</p>
+                </ng-container>
+            </div>
+    
+    
+            <div>
+                <label for="firstName">First Name</label>
+                <input formControlName="firstName" type="text" name="firstName">
+                <ng-container *ngIf="showError('firstName')">
+                    <p *ngIf="isNotValid('firstName', 'required')">Field is required!</p>
+                </ng-container>
+            </div>
+    
+            <div>
+                <label for="lastName">Last Name</label>
+                <input formControlName="lastName" type="text" name="lastName">
+                <ng-container *ngIf="showError('lastName')">
+                    <p *ngIf="isNotValid('lastName', 'required')">Field is required!</p>
+                </ng-container>
+            </div>
+    
+            <button [disabled]="editForm.invalid">Submit</button>
+    
+        </form>
+    </div>
+</div>
+

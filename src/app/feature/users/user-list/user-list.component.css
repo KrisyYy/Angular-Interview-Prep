@@ -1,0 +1,13 @@
+.userListBox {
+    gap: 1;
+    width: 1000px;
+    margin: auto;
+}
+
+.userBox {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid #000000;
+}
