@@ -1,38 +1,38 @@
-<div>
+<div ngClass="content">
     <form [formGroup]="form" (ngSubmit)="submitHandler()" ngClass="container">
         <h2>{{!!userId ? "Edit" : "Create New"}} User</h2>
 
-        <div>
-            <label for="email">Email</label>
-            <input formControlName="email" type="email" name="email">
+        <div ngClass="inputBox">
+            <input formControlName="email" type="email" name="email" placeholder="Email">
             <ng-container *ngIf="showError('email')">
-                <p *ngIf="isNotValid('email', 'required')">Field is required!</p>
-                <p *ngIf="isNotValid('email', 'email')">Email is not valid!</p>
+                <p ngClass="validation" *ngIf="isNotValid('email', 'required')">Field is required!</p>
+                <p ngClass="validation" *ngIf="isNotValid('email', 'email')">Email is not valid!</p>
             </ng-container>
         </div>
 
 
-        <div>
-            <label for="firstName">First Name</label>
-            <input formControlName="firstName" type="text" name="firstName">
+        <div ngClass="inputBox">
+            <input formControlName="firstName" type="text" name="firstName" placeholder="First Name">
             <ng-container *ngIf="showError('firstName')">
-                <p *ngIf="isNotValid('firstName', 'required')">Field is required!</p>
+                <p ngClass="validation" *ngIf="isNotValid('firstName', 'required')">Field is required!</p>
+                <p ngClass="validation" *ngIf="isNotValid('firstName', 'maxlength')">Name is too long!</p>
             </ng-container>
         </div>
 
-        <div>
-            <label for="lastName">Last Name</label>
-            <input formControlName="lastName" type="text" name="lastName">
+        <div ngClass="inputBox">
+            <input formControlName="lastName" type="text" name="lastName" placeholder="Last Name">
             <ng-container *ngIf="showError('lastName')">
-                <p *ngIf="isNotValid('lastName', 'required')">Field is required!</p>
+                <p ngClass="validation" *ngIf="isNotValid('lastName', 'required')">Field is required!</p>
+                <p ngClass="validation" *ngIf="isNotValid('lastName', 'maxlength')">Name is too long!</p>
             </ng-container>
         </div>
 
-        <button [disabled]="form.invalid">Submit</button>
+        <button ngClass="submit" [disabled]="form.invalid">Submit</button>
 
     </form>
+
+    <button ngClass="back" routerLink="/home">Back</button>
 </div>
 
 
 
-<button ngClass="back" routerLink="/home">Back</button>

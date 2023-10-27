@@ -1,3 +1,16 @@
-<div *ngIf="!!users" ngClass="userListBox">
-    <app-user-item *ngFor="let user of users" [user]="user"></app-user-item>
+<div ngClass="mainContainer">
+    <div ngClass="userListHeader">
+        <p>Name</p>
+        <p>Email</p>
+        <p ngClass="flex2"><span ngClass="actionItem">Action</span></p>
+    </div>
+    <div *ngIf="!!users && users.length > 0 else empty" ngClass="userListBox">
+        <app-user-item *ngFor="let user of users; index as i" [user]="user" [isLast]="i == users.length - 1"></app-user-item>
+    </div>
 </div>
+
+<ng-template #empty>
+    <div ngClass="empty">
+        <p>There are no users currently</p>
+    </div>
+</ng-template>

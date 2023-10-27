@@ -61,8 +61,8 @@ export class UserService {
   userForm(): FormGroup {
     return this.formBuilder.group({
       email: new FormControl("", [Validators.required, Validators.email]),
-      firstName: ["", { validators: [Validators.required, Validators.maxLength(50)]}],
-      lastName: ["", { validators: [Validators.required, Validators.maxLength(50)]}]
+      firstName: ["", { validators: [Validators.required, Validators.maxLength(40)]}],
+      lastName: ["", { validators: [Validators.required, Validators.maxLength(40)]}]
     })
   }
 

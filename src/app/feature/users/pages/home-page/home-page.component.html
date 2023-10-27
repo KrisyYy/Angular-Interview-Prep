@@ -1,4 +1,6 @@
-<button ngClass="create" routerLink="/create">Create User</button>
-<app-user-list></app-user-list>
+<div ngClass="content">
+    <button ngClass="create" routerLink="/create">Create User</button>
+    <app-user-list></app-user-list>
 
-<app-edit-modal *ngIf="showEditModal" [userId]="userId!"></app-edit-modal>
+    <app-edit-modal *ngIf="showEditModal" [userId]="userId!"></app-edit-modal>
+</div>

@@ -11,10 +11,14 @@ import { UserService } from 'src/app/core/services/user.service';
 export class UserItemComponent {
 
   @Input() user!: IUser;
+  @Input() isLast!: boolean;
   
   constructor (private router: Router, private userService: UserService) { }
 
-  editModalHandler(id: string): void {
+  editModalHandler(id: string, event:any): void {
+    if (event.view.getSelection().toString().length !== 0) {
+      return;
+    }
     this.userService.openCloseModal.emit(id);
   }
 

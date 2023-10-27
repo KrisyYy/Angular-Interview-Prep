@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --primary-color-hover: #91142f;
+    --primary-color: #ad132d;
+    --black-color: #2B2D42;
+    --dark-color: #6B6E95;
+    --gray-color: #8C92AD;
+    --light-color: #C7CDE4;
+    --white-color: #EDEFF4;
+    --error-color: #f05050;
+    --success-color: #3c963c;
+  }
+
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+  }

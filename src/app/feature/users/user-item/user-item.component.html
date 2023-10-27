@@ -1,8 +1,10 @@
-<div (click)="editModalHandler(user.id)"  ngClass="userBox">
-    <div>
+<div (click)="editModalHandler(user.id, $event)" [ngClass]="[isLast ? 'isLast' : '' ,'userBox']">
+    <span ngClass="namesContainer">
         <p>{{user.firstName}} {{user.lastName}}</p>
-        <p>Email: {{user.email}}</p>
-    </div>
-    <button (click)="editHandler(user.id, $event)">Edit</button>
-    <button (click)="deleteHandler(user.id, $event)">Delete</button>
+        <p>{{user.email}}</p>
+    </span>
+    <span ngClass="buttonContainer">
+        <button ngClass="edit" (click)="editHandler(user.id, $event)">Edit</button>
+        <button ngClass="delete" (click)="deleteHandler(user.id, $event)">Delete</button>
+    </span>
 </div>
