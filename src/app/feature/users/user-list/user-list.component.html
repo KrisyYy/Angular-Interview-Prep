@@ -8,9 +8,12 @@
             <button ngClass="create" routerLink="/create">Create User</button>
         </div>
     </div>
-    <div *ngIf="!!users && users.length > 0 else empty" ngClass="userListBox">
-        <app-user-item *ngFor="let user of users; index as i" [user]="user" [isLast]="i == users.length - 1"></app-user-item>
-    </div>
+    <ng-container *ngIf="!!users">
+        <div *ngIf="users.length > 0 else empty"  ngClass="userListBox">
+            <app-user-item *ngFor="let user of users; index as i" [user]="user" [isLast]="i == users.length - 1"></app-user-item>
+        </div>
+        
+    </ng-container>
 </div>
 
 <ng-template #empty>
