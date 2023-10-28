@@ -57,12 +57,12 @@ export class UserService {
   }
 
 
-  // TODO validate more
   userForm(): FormGroup {
+    const regexPattern = /^([a-zA-Z\xC0-\uFFFF]+([ \-']{0,1}[a-zA-Z\xC0-\uFFFF]+)*[.]{0,1}){1,2}$/
     return this.formBuilder.group({
       email: new FormControl("", [Validators.required, Validators.email]),
-      firstName: ["", { validators: [Validators.required, Validators.maxLength(40)]}],
-      lastName: ["", { validators: [Validators.required, Validators.maxLength(40)]}]
+      firstName: ["", { validators: [Validators.required, Validators.maxLength(50)]}],
+      lastName: ["", { validators: [Validators.required, Validators.maxLength(50)]}]
     })
   }
 

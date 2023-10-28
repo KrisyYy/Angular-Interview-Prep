@@ -5,7 +5,8 @@
             <h2>Edit User</h2>
     
             <div ngClass="inputBox">
-                <input formControlName="email" type="email" name="email" placeholder="Email">
+                <label for="email">Email</label>
+                <input formControlName="email" type="email" name="email">
                 <ng-container *ngIf="showError('email')">
                     <p ngClass="validation" *ngIf="isNotValid('email', 'required')">Field is required!</p>
                     <p ngClass="validation" *ngIf="isNotValid('email', 'email')">Email is not valid!</p>
@@ -14,7 +15,8 @@
     
     
             <div ngClass="inputBox">
-                <input formControlName="firstName" type="text" name="firstName" placeholder="First Name">
+                <label for="firstName">First Name</label>
+                <input formControlName="firstName" type="text" name="firstName">
                 <ng-container *ngIf="showError('firstName')">
                     <p ngClass="validation" *ngIf="isNotValid('firstName', 'required')">Field is required!</p>
                     <p ngClass="validation" *ngIf="isNotValid('firstName', 'maxlength')">Name is too long!</p>
@@ -22,7 +24,8 @@
             </div>
     
             <div ngClass="inputBox">
-                <input formControlName="lastName" type="text" name="lastName" placeholder="Last Name">
+                <label for="lastName">Last Name</label>
+                <input formControlName="lastName" type="text" name="lastName">
                 <ng-container *ngIf="showError('lastName')">
                     <p ngClass="validation" *ngIf="isNotValid('lastName', 'required')">Field is required!</p>
                     <p ngClass="validation" *ngIf="isNotValid('lastName', 'maxlength')">Name is too long!</p>

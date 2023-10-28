@@ -1,8 +1,12 @@
 <div ngClass="mainContainer">
     <div ngClass="userListHeader">
-        <p>Name</p>
-        <p>Email</p>
-        <p ngClass="flex2"><span ngClass="actionItem">Action</span></p>
+        <div ngClass="namesContainer">
+            <p ngClass="name">Name</p>
+            <p ngClass="email">Email</p>
+        </div>
+        <div ngClass="actionContainer">
+            <button ngClass="create" routerLink="/create">Create User</button>
+        </div>
     </div>
     <div *ngIf="!!users && users.length > 0 else empty" ngClass="userListBox">
         <app-user-item *ngFor="let user of users; index as i" [user]="user" [isLast]="i == users.length - 1"></app-user-item>

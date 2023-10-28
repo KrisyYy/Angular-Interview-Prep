@@ -7,7 +7,8 @@
     text-align: center;
     padding: 3rem;
     border-radius: 20px;
-    box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.5);
+    background-color: white;
+    box-shadow: 0px 5px 10px 0px rgba(50, 25, 25, 0.5);
 }
 
 h2 {
@@ -17,8 +18,7 @@ h2 {
 }
 
 input {
-    border: none;
-    border-bottom: 1px solid var(--light-color);
+    border: 1px solid var(--light-color);
     width: 250px;
     font-size: 16px;
     padding: 0.5rem 1rem;
@@ -26,42 +26,48 @@ input {
     margin-bottom: 3rem;
 }
 
+label {
+    display: block;
+    text-align: start;
+    margin-bottom: 0.2rem;
+}
+
 .back {
     display: block;
     width: 30%;
     margin: 1rem auto 0 auto;
-    border: none;
     font-size: 18px; 
     padding: 0.6rem 0; 
     border-radius: 25px;
-    background-color: var(--gray-color);
-    color: white;
+    background-color: white;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    box-shadow: 0px 5px 10px 0px var(--primary-color-shadow);
 }
 
 .back:hover {
     transition-duration: 250ms;
     transition-timing-function: ease;
-    background-color: var(--dark-color);
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: white;
 }
 
 .inputBox {
+    width: 250px;
+    margin: 0 auto;
     position: relative;
 }
 
 .validation {
     position: absolute;
     width: 150px;
-    top: 2.5rem;
+    top: 4rem;
     left: 50%;
     margin-left: -75px;
     font-size: 14px;
     color: var(--error-color);
 }
-
-/* label {
-    display: block;
-    margin-bottom: 0.2rem;
-} */
 
 .submit {
     transition-duration: 250ms;
@@ -76,6 +82,7 @@ input {
 }
 
 .submit:hover {
+    cursor: pointer;
     background-color: var(--primary-color-hover);
 }
 
@@ -86,4 +93,5 @@ input {
 
 .submit:disabled:hover {
     background-color: var(--primary-color);
+    cursor: initial;
 }
