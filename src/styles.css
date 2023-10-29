@@ -1,14 +1,16 @@
 :root {
-    --primary-color-hover: #D90429;
-    --primary-color: #EF233C;
+    --primary-color-hover: #d61334;
+    --primary-color: #f03047;
     --primary-color-shadow: #b42d2d80;
     --black-color: #2B2D42;
     --dark-color: #6B6E95;
     --gray-color: #8C92AD;
     --light-color: #C7CDE4;
     --white-color: #EDEFF4;
-    --error-color: #f05050;
-    --success-color: #3c963c;
+    --error-color: #af3939;
+    --error-color-bg: #f5ddde;
+    --success-color: #2f6b2f;
+    --success-color-bg: #def0d8;
   }
 
   *{
@@ -23,6 +25,6 @@
   }
 
   body {
-    background: rgb(230,235,255);
-    background: linear-gradient(135deg, rgba(230,235,255,1) 0%, rgba(255,230,230,1) 85%);
+    background: linear-gradient(225deg, rgb(175, 185, 255) 0%, rgb(255, 175, 175) 75%);
+    /* background: linear-gradient(135deg, rgb(255, 200, 150) 0%, rgb(255, 150, 150) 85%); */
   }

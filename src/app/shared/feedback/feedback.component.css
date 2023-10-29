@@ -3,18 +3,20 @@
     top: 30px;
     right: 50px;
     max-width: 300px;
+    font-size: 16px;
+    font-weight: 600;
     width: 30%;
     padding: 1rem;
-    border: solid 1px;
+    border: none;
     border-radius: 10px;
 }
 
 .errorBox {
-    border-color: var(--error-color);
-    background-color:#f050501a;
+    color: var(--error-color);
+    background-color: var(--error-color-bg);
 }
 
 .successBox {
-    border-color: var(--success-color);
-    background-color: #3c963c1a;
+    color: var(--success-color);
+    background-color: var(--success-color-bg);
 }
